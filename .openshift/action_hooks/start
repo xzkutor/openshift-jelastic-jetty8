@@ -1,4 +1,8 @@
-PENSHIFT_JETTY8_DIR}/versions/${Version}/
+#!/bin/bash
+
+. /etc/jelastic/environment
+
+cd ${OPENSHIFT_JETTY8_DIR}/versions/${Version}/
 
 if [ -e /opt/repo/versions/${Version}/bin/variablesparser.sh ]; then
     . /opt/repo/versions/${Version}/bin/variablesparser.sh
@@ -21,5 +25,3 @@ CMD="java -jar $JAVA_OPTS ${GC} start.jar -Djetty.host=$OPENSHIFT_JETTY8_APP_HOS
 nohup $CMD >> $OPENSHIFT_JETTY8_LOG_DIR/server.log 2>&1 &
 
 echo $! > jetty.pid && echo "Jetty8 started successfully"
-
-
