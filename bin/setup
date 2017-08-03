@@ -6,3 +6,5 @@ for dir in logs tmp pid cache  env; do
 	mkdir -p $dir
 done
 
+echo -e "$(find /usr -name libjli.so -printf "%h\n")" > /etc/ld.so.conf.d/java.conf ; \
+ldconfig
